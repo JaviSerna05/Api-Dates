@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Text, FlatList, View, StyleSheet } from 'react-native';
+import { Text, FlatList, View } from 'react-native';
 import axios from 'axios';
 import { List, Headline, Button, FAB } from 'react-native-paper';
 import globalStyles from '../styles/global';
@@ -45,27 +45,19 @@ const Home = ({navigation}) => {
                 <List.Item
                 title= {item.name}
                 description= {item.document}
-                onPress={() => navigation.navigate("DetailsDate", { item })}
+                onPress={() => navigation.navigate("DetailsDate", { item, saveReadAPI })}
                 />
             )} 
         />
 
         <FAB
             icon="plus"
-            style={styles.fab}
+            style={globalStyles.fab}
             onPress={() => navigation.navigate("NewDate", {saveReadAPI}) }
         />
     </View>
     );
 }
 
-const styles = StyleSheet.create({
-    fab: {
-        position: 'absolute',
-        margin: 20,
-        right: 0,
-        bottom: 20
-    }
-})
 
 export default Home;

@@ -60,6 +60,9 @@ export default function App() {
          <Stack.Screen
           name="DetailsDate"
           component={DetailsDate}
+          options={{
+            title: "DetailsDates"
+          }}
         />    
       </Stack.Navigator>
     </NavigationContainer>

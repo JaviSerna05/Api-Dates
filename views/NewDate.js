@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-native-paper';
 import globalStyles from '../styles/global';
@@ -6,8 +6,10 @@ import axios from 'axios';
 
 const NewDate = ({navigation, route}) => {
 
+    console.log(route.params);
     const {saveReadAPI} = route.params;
 
+    //Form Fields
     const [ name, saveName] = useState('');
     const [ lastname, saveLastName] = useState('');
     const [ document, saveDocument] = useState('');
@@ -16,6 +18,21 @@ const NewDate = ({navigation, route}) => {
     const [ sector, saveSector] = useState('');
     const [ phone, savePhone] = useState('');
     const [ alert, saveAlert] = useState(false);
+
+    //Detect if we are editing
+    useEffect(() => {
+        if(route.params.date){
+            const {name, lastname, document, birthdate, city, sector, phone} = route.params.date;
+
+            saveName(name);
+            saveLastName(lastname);
+            saveDocument(document);
+            saveBirthDate(birthdate);
+            saveCity(city);
+            saveSector(sector);
+            savePhone(phone);
+        } 
+    }, []);
 
     const createDate = async () => {
         //Validation
@@ -29,7 +46,21 @@ const NewDate = ({navigation, route}) => {
         //Create Date
         const date = { name, lastname, document, birthdate, city, sector, phone};
         console.log(date);
-        //Save the date in the API
+
+        //If we are edit  or create a new date
+        if (route.params.date) {
+            const {id} = route.params.date;
+            date.id = id;
+            const url = `http://127.0.0.1:3000/Dates/${id}`;
+            
+            try {
+                await axios.put(url, date);
+            } catch (error) {
+                console.log(error);
+            }
+
+        }else {
+             //Save the date in the API
         try {
             //For Android - ZL4225TWKH 
             await axios.post('http://127.0.0.1:3000/Dates', date);
@@ -38,9 +69,12 @@ const NewDate = ({navigation, route}) => {
         } catch (error) {
             console.log(error);
         }
+        }
+       
 
         //Redirect
         navigation.navigate('Home');
+
         //Clean the form
         saveName('');
         saveLastName('');

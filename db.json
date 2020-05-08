@@ -1,27 +1,7 @@
 {
   "Dates": [
     {
-      "birthdate": "05/03/93",
-      "city": "Bello",
-      "document": "12345954",
-      "lastname": "Serna",
-      "name": "Javi",
-      "phone": "31254687",
-      "sector": "Machado",
-      "id": 1
-    },
-    {
-      "name": "Javi",
-      "lastname": "Serna",
-      "document": "12348767",
-      "birthdate": "07/08/2008",
-      "city": "Medellín",
-      "sector": "Barrio triste",
-      "phone": "3124567894",
-      "id": 2
-    },
-    {
-      "name": "Xavi",
+      "name": "Xavi actualizado",
       "lastname": "Mena",
       "document": "56491357",
       "birthdate": "07/08/2010",
@@ -29,16 +9,6 @@
       "sector": "Coral",
       "phone": "3124561324",
       "id": 3
-    },
-    {
-      "name": "Sergio",
-      "lastname": "Jaramillo",
-      "document": "1524897643",
-      "birthdate": "09/12/1987",
-      "city": "Cúcuta",
-      "sector": "Cucuteña",
-      "phone": "3154687989",
-      "id": 4
     },
     {
       "name": "Jorge",
@@ -59,16 +29,6 @@
       "sector": "Zanzunsg",
       "phone": "8731073815",
       "id": 6
-    },
-    {
-      "name": "Okkks",
-      "lastname": "Okkkkka",
-      "document": "576736487",
-      "birthdate": "0183729",
-      "city": "Okk",
-      "sector": "Ok",
-      "phone": "31728134",
-      "id": 7
     }
   ]
 }

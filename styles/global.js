@@ -13,6 +13,12 @@ const globalStyles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         fontSize: 20
+    },
+    fab: {
+        position: 'absolute',
+        margin: 20,
+        right: 0,
+        bottom: 20
     }
 });
 
