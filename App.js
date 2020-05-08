@@ -44,15 +44,18 @@ export default function App() {
           component={Home}
           options={ ({navigation, route}) => ({
             headerTitleAlign: 'center',
-            headerLeft: (props) => <MenuTop {...props} 
-                                  navigation={navigation}
-                                  route={route}
-                            />
+            // headerLeft: (props) => <MenuTop {...props} 
+            //                       navigation={navigation}
+            //                       route={route}
+            //                 />
           })}
         />
          <Stack.Screen
           name="NewDate"
           component={NewDate}
+          options={{
+            title: "NewDate"
+          }}
         />  
          <Stack.Screen
           name="DetailsDate"

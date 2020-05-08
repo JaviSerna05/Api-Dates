@@ -2,8 +2,11 @@ import React, { useState} from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-native-paper';
 import globalStyles from '../styles/global';
+import axios from 'axios';
 
-const NewDate = () => {
+const NewDate = ({navigation, route}) => {
+
+    const {saveReadAPI} = route.params;
 
     const [ name, saveName] = useState('');
     const [ lastname, saveLastName] = useState('');
@@ -14,7 +17,7 @@ const NewDate = () => {
     const [ phone, savePhone] = useState('');
     const [ alert, saveAlert] = useState(false);
 
-    const createDate = () => {
+    const createDate = async () => {
         //Validation
         if (name === '' || phone === '' || lastname === '' || document === ''
         || birthdate === '' || city === '' || sector === '') {
@@ -27,10 +30,28 @@ const NewDate = () => {
         const date = { name, lastname, document, birthdate, city, sector, phone};
         console.log(date);
         //Save the date in the API
+        try {
+            //For Android - ZL4225TWKH 
+            await axios.post('http://127.0.0.1:3000/Dates', date);
+
+            // await axios.post('http://localhost:3000/Dates', date)
+        } catch (error) {
+            console.log(error);
+        }
 
         //Redirect
-
+        navigation.navigate('Home');
         //Clean the form
+        saveName('');
+        saveLastName('');
+        saveDocument('');
+        saveBirthDate('');
+        saveCity('');
+        saveSector('');
+        savePhone('');
+
+        //Change true for give us the new date
+         saveReadAPI(true);
     }
 
     return ( 
